@@ -45,6 +45,10 @@ impl Identity {
         };
     }
 
+    pub fn get_auth_config(&self) -> &AuthConfig {
+        &self.config
+    }
+
     pub async fn get_current_user(
         &self,
     ) -> Result<Response, Box<dyn std::error::Error + Send + Sync>> {
