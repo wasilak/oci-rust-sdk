@@ -21,6 +21,7 @@
   "schedule": [
     "* 0-3 * * *"
   ],
+  "forkProcessing": "enabled",
   "packageRules": [
     {
       "matchUpdateTypes": [
