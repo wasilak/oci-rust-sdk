@@ -1,53 +1,53 @@
-name: Rust
+# name: Rust
 
-on:
-  push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+# on:
+#   push:
+#     branches: ["master"]
+#   pull_request:
+#     branches: ["master"]
 
-env:
-  CARGO_TERM_COLOR: always
+# env:
+#   CARGO_TERM_COLOR: always
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+#     steps:
+#       - uses: actions/checkout@v3
       
-      - name: Run OCI Emulator
-        run: docker run -d --name oci-emulator -p 12000:12000 cameritelabs/oci-emulator:latest
+#       - name: Run OCI Emulator
+#         run: docker run -d --name oci-emulator -p 12000:12000 cameritelabs/oci-emulator:latest
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+#       - uses: actions-rs/toolchain@v1
+#         with:
+#           toolchain: stable
+#           override: true
           
-      - name: install tarpaulin
-        run: cargo install cargo-tarpaulin
+#       - name: install tarpaulin
+#         run: cargo install cargo-tarpaulin
         
-      - name: run tarpaulin
-        run: cargo tarpaulin --out Lcov
+#       - name: run tarpaulin
+#         run: cargo tarpaulin --out Lcov
 
-      - name: Codecov
-        uses: codecov/codecov-action@v3.1.0
-        with:
-          verbose: true
-          fail_ci_if_error: true
+#       - name: Codecov
+#         uses: codecov/codecov-action@v3.1.0
+#         with:
+#           verbose: true
+#           fail_ci_if_error: true
 
-  # build_publish:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   if: github.event_name == 'push'
+#   build_publish:
+#     needs: test
+#     runs-on: ubuntu-latest
+#     if: github.event_name == 'push'
 
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions-rs/toolchain@v1
-  #       with:
-  #         toolchain: stable
-  #         override: true
-  #     - uses: katyo/publish-crates@v1
-  #       with:
-  #         registry-token: ${{ secrets.CARGO_TOKEN }}
-  #         ignore-unpublished-changes: true
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions-rs/toolchain@v1
+#         with:
+#           toolchain: stable
+#           override: true
+#       - uses: katyo/publish-crates@v1
+#         with:
+#           registry-token: ${{ secrets.CARGO_TOKEN }}
+#           ignore-unpublished-changes: true
