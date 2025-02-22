@@ -36,18 +36,18 @@ jobs:
           verbose: true
           fail_ci_if_error: true
 
-  build_publish:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+  # build_publish:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'push'
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-      - uses: katyo/publish-crates@v1
-        with:
-          registry-token: ${{ secrets.CARGO_TOKEN }}
-          ignore-unpublished-changes: true
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions-rs/toolchain@v1
+  #       with:
+  #         toolchain: stable
+  #         override: true
+  #     - uses: katyo/publish-crates@v1
+  #       with:
+  #         registry-token: ${{ secrets.CARGO_TOKEN }}
+  #         ignore-unpublished-changes: true
