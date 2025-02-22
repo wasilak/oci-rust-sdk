@@ -47,7 +47,7 @@ jobs:
         with:
           toolchain: stable
           override: true
-      - uses: katyo/publish-crates@v1
+      - uses: katyo/publish-crates@v2
         with:
           registry-token: ${{ secrets.CARGO_TOKEN }}
           ignore-unpublished-changes: true
