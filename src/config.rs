@@ -3,6 +3,7 @@ use openssl::pkey::{PKey, Private};
 use openssl::rsa::Rsa;
 use std::fs;
 
+#[derive(Clone)]
 pub struct AuthConfig {
     pub user: String,
     pub fingerprint: String,

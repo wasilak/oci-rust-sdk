@@ -3,6 +3,7 @@ use reqwest::{header::HeaderMap, Response};
 
 use crate::{base_client::oci_signer, config::AuthConfig};
 
+#[derive(Clone)]
 pub struct Identity {
     config: AuthConfig,
     service_endpoint: String,
