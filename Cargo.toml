@@ -19,3 +19,4 @@ serde_json = "~1"
 chrono = "~0"
 home = "~0"
 configparser = "~3"
+serde = { version = "~1", features = ["derive"] }
