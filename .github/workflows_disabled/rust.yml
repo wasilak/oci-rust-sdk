@@ -11,6 +11,7 @@ env:
 
 jobs:
   test:
+    if: github.actor != 'renovate[bot]' # Exclude Renovate bot pull requests
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +40,7 @@ jobs:
   build_publish:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.actor != 'renovate[bot]'
 
     steps:
       - uses: actions/checkout@v2
